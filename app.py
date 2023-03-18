@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 import argparse
 import pandas as pd
 import smtplib
@@ -8,11 +10,20 @@ from email.mime.multipart import MIMEMultipart
 from jinja2 import Template
 import configparser
 
-# 从命令行参数中读取 Excel 文件名
+
+# 设置命令行参数
 parser = argparse.ArgumentParser(description='发送邮件给Excel文件中的收件人。')
 parser.add_argument('excel_file', help='包含收件人列表的Excel文件')
-parser.add_argument('--temp_file', required=False, default='email_template.html', help='邮件模板文件，HTML格式，缺省为email_template.html')
+parser.add_argument('--temp_file', required=False, default='email_template.html', 
+                    help='邮件模板文件，HTML格式，缺省为email_template.html')
+parser.add_argument('--send_all', required=False, choices=['Y', 'N'], default='N',
+                    help='如果为Y，发送邮件给excel列表中的所有人。缺省为N，只发送给列表中的第一个人，可用于测试配置文件和邮件模板。')
 args = parser.parse_args()
+
+# 是否发送邮件给所有人。
+send_all = False
+if args.send_all == "Y":
+    send_all = True
 
 # 读取 Excel 文件
 try:
@@ -23,7 +34,7 @@ try:
         df["邮件已发送"]="N"
 
 except (FileNotFoundError, openpyxl.utils.exceptions.InvalidFileException) as e:
-    print(f'读取Excel文件出错: {e}')
+    print('读取Excel文件出错: {e}')
     exit()
 
 # 从配置文件中读取配置信息
@@ -93,7 +104,7 @@ with smtplib.SMTP(smtp_server, smtp_port) as server:
         except Exception as e:
             print("Error sending mail to {}".format(email_addr))
 
-        if index >= 0:
+        if send_all is False:
             break
 
         if (index+1) % 50 == 0:
