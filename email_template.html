@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>订单确认</title>
+	<style>
+		body {
+			font-family: 'Times New Roman', serif;
+			font-size: 14px;
+			line-height: 1.5;
+			color: #333;
+			margin: 0;
+			padding: 0;
+		}
+		
+		.container {
+			max-width: 800px;
+			margin: 20px auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+		}
+		
+		.logo {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		
+		.logo img {
+			max-width: 200px;
+		}
+		
+		.title {
+			font-size: 24px;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		
+		.date {
+			font-size: 18px;
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		
+		.body {
+			margin-bottom: 20px;
+		}
+		
+		.body p {
+			margin-bottom: 10px;
+		}
+		
+		.footer {
+			text-align: center;
+			font-size: 12px;
+			color: #999;
+		}
+		
+		.footer a {
+			color: #999;
+			text-decoration: none;
+		}
+
+		
+		table {
+			border-collapse: collapse;
+			width: 100%;
+			margin-bottom: 1rem;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 50%;
+		}
+
+		th, td {
+			text-align: left;
+			padding: 0.75rem;
+			vertical-align: top;
+			border-top: 1px solid #dee2e6;
+		}
+
+		th {
+			background-color: rgba(0, 61, 95, 0.1);
+			color: #000;
+			font-weight: bold;
+			border-bottom: 2px solid #dee2e6;
+		}
+
+		/* Table header with centered text */
+		.text-center th {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="logo">
+			<img src="https://www.toastmasters.org/Content/images/ToastmastersLogo192.png" alt="Toastmasters Logo">
+		</div>
+		<div class="title">您的订单已确认</div>
+		
+		<div class="body">
+			
+			<p><strong>尊敬的 {{姓名}}，</strong></p>
+
+			<p>感谢您购买xxx。您的订单信息如下：<br>
+			</p>
+		
+			<table>
+				<tr>
+				  <th>订单号</th>
+				  <th>姓名</th>
+				  <th>电话</th>
+				  <th>邮箱</th>
+				</tr>
+				<tr>
+				  <td>{{订单编号}}</td>	
+				  <td>{{姓名}}</td> 
+				  <td>{{手机号}}</td>	
+				  <td>{{邮箱}}</td>	
+				</tr>
+			  </table>
+	  
+		  <p>
+		  <br><br>如果您对订单有任何疑问，欢迎联系我们的客服人员。</p>
+	  
+		  <p>
+			<br>    
+			<strong>致敬
+			<br>李四
+			</strong>
+		  </p>
+		  <p>
+			xxx总裁
+			<br> 
+			<br>微信/WeChat：wechatxxxx
+			<br>电话/Tel：18688888888
+			<br>邮箱/Email：lisi@sina.com
+		  </p>
+	  
+		</div>
+		<div class="footer">
+			<p>Copyright © 2023 Company Name | 
+			<a href="https://www.example.com/privacy-policy/">Privacy Policy</a> | 
+			<a href="https://www.example.com/terms-of-service/">Terms of Service</a></p>
+		</div>
+	</div>
+</body>
+</html>
