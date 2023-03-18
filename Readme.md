@@ -11,7 +11,9 @@
 
 1. 如果你还没有安装python，首先请[下载python安装包](https://www.python.org/downloads/)并安装。
 2. 安装必要的python包  
-    `pip install -r requirments.txt`
+    ```
+    pip install -r requirments.txt
+    ```
 
 
 3. 定制邮件模板email_template.html。在需要的地方输入要替换的变量。变量格式为 {{变量名称}}。  
@@ -42,14 +44,20 @@
 任选下列方式中的一种执行：
 
 - 只发送邮件给excel列表中的第一个人（测试配置文件和邮件模板）：   
-`python app.py <excel_file>`
+```
+python app.py <excel_file>
+```
     
 
 - 发送邮件给所有收件人：  
-` python app.py --send_all Y <excel_file>`
+```
+python app.py --send_all Y <excel_file>
+```
 
 - 查看使用帮助：  
-` python app.py -h`
+```
+python app.py -h
+```
   
   
   
@@ -58,7 +66,9 @@
   
 使用下列命令可以继续发送邮件，其中“邮件已发送”列的值为“Y”的行会跳过，实现断点重发的效果。
   
-    python app.py --temp_file email_template.html results.xlsx 
+```
+python app.py --send_all Y results.xlsx
+```
 
 
     
