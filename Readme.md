@@ -51,7 +51,7 @@ python app.py <excel_file>
 
 - 发送邮件给所有收件人：  
 ```
-python app.py --send_all Y <excel_file>
+python app.py --all <excel_file>
 ```
 
 - 查看使用帮助：  
@@ -67,7 +67,7 @@ python app.py -h
 使用下列命令可以继续发送邮件，其中“邮件已发送”列的值为“Y”的行会跳过，实现断点重发的效果。
   
 ```
-python app.py --send_all Y results.xlsx
+python app.py --all  results.xlsx
 ```
 
 

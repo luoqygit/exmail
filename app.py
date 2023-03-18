@@ -16,14 +16,18 @@ parser = argparse.ArgumentParser(description='发送邮件给Excel文件中的�
 parser.add_argument('excel_file', help='包含收件人列表的Excel文件')
 parser.add_argument('--temp_file', required=False, default='email_template.html', 
                     help='邮件模板文件，HTML格式，缺省为email_template.html')
-parser.add_argument('--send_all', required=False, choices=['Y', 'N'], default='N',
-                    help='如果为Y，发送邮件给excel列表中的所有人。缺省为N，只发送给列表中的第一个人，可用于测试配置文件和邮件模板。')
+parser.add_argument('--all', required=False, action="store_true", 
+                    help='如果包含这个参数，发送邮件给excel列表中的所有人。否则只发送给列表中的第一个人，可用于测试配置文件和邮件模板。')
 args = parser.parse_args()
 
 # 是否发送邮件给所有人。
 send_all = False
-if args.send_all == "Y":
-    send_all = True
+if args.all is True:
+    print("Send to all receipients.")
+else:
+    print("send to the first person.")
+
+exit()
 
 # 读取 Excel 文件
 try:
