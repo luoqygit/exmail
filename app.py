@@ -39,7 +39,7 @@ except (FileNotFoundError, openpyxl.utils.exceptions.InvalidFileException) as e:
 
 # 从配置文件中读取配置信息
 try:
-    with open('config.ini') as f:
+    with open('config.ini', encoding='UTF-8') as f:
         config = configparser.ConfigParser()
         config.read_file(f)
 
@@ -58,7 +58,7 @@ except IOError:
 
 # 打开邮件模板
 try:
-    with open(args.temp_file, 'r') as f:
+    with open(args.temp_file, 'r', encoding='UTF-8') as f:
         template = Template(f.read())
 except IOError:
     print("读取{}出错。".format(args.temp_file))
