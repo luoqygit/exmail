@@ -20,14 +20,7 @@ parser.add_argument('--all', required=False, action="store_true",
                     help='如果包含这个参数，发送邮件给excel列表中的所有人。否则只发送给列表中的第一个人，可用于测试配置文件和邮件模板。')
 args = parser.parse_args()
 
-# 是否发送邮件给所有人。
-send_all = False
-if args.all is True:
-    print("Send to all receipients.")
-else:
-    print("send to the first person.")
 
-exit()
 
 # 读取 Excel 文件
 try:
@@ -108,7 +101,8 @@ with smtplib.SMTP(smtp_server, smtp_port) as server:
         except Exception as e:
             print("Error sending mail to {}".format(email_addr))
 
-        if send_all is False:
+        # 是否发送邮件给所有人。
+        if args.all is not True:
             break
 
         if (index+1) % 50 == 0:
